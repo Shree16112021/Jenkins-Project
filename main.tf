@@ -1,12 +1,12 @@
 resource "aws_vpc" "myvpc" {
-    cidr_block = "90.90.0.0/16"
+    cidr_block = "60.60.0.0/16"
     tags = {
       Name = "MYVPC"
     }
 }
 resource "aws_subnet" "public" {
     vpc_id     = aws_vpc.myvpc.id
-    cidr_block = "90.90.1.0/24"
+    cidr_block = "60.60.1.0/24"
     tags = {
       Name = "Public"
     }
@@ -14,7 +14,7 @@ resource "aws_subnet" "public" {
 }
 resource "aws_subnet" "private" {
     vpc_id     = aws_vpc.myvpc.id
-    cidr_block = "90.90.2.0/24"
+    cidr_block = "60.60.2.0/24"
     tags = {
       Name = "Private"
     }
@@ -57,7 +57,7 @@ resource "aws_nat_gateway" "mynat" {
 resource "aws_route_table" "private" {
     vpc_id = aws_vpc.myvpc.id
     tags = {
-      name = "private"
+      name = "PrivateRouteTable"
     }
   
 }
