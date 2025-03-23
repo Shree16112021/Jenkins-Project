@@ -57,7 +57,7 @@ resource "aws_nat_gateway" "mynat" {
 resource "aws_route_table" "private" {
     vpc_id = aws_vpc.myvpc.id
     tags = {
-      name = "private"
+      name = "PrivateRouteTable"
     }
   
 }
