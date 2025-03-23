@@ -1,7 +1,7 @@
 resource "aws_vpc" "myvpc" {
     cidr_block = "20.20.0.0/16"
     tags = {
-      Name = "myvpc"
+      Name = "MYVPC"
     }
 }
 resource "aws_subnet" "public" {
@@ -22,7 +22,7 @@ resource "aws_subnet" "private" {
 resource "aws_internet_gateway" "gw" {
     vpc_id = aws_vpc.myvpc.id
     tags = {
-      Name = "mygw"
+      Name = "MYIGW"
     }
   
 }
@@ -44,14 +44,14 @@ resource "aws_route" "public" {
 resource "aws_eip" "myeip" {
     domain = "vpc"
   tags = {
-    Name = "myeip"
+    Name = "MyEIP"
   }
 }
 resource "aws_nat_gateway" "mynat" {
     allocation_id = aws_eip.myeip.id
     subnet_id     = aws_subnet.public.id
     tags = {
-      Name = "mynat"
+      Name = "MyNAT"
     }
 }
 resource "aws_route_table" "private" {
